@@ -13,5 +13,12 @@ CHIP Xor {
     OUT out;
 
     PARTS:
-    // Put your code here:
+        // TODO: 簡単化の手法
+        // (シンプルに積和標準から求めたらこんなに簡単にならないはず.)
+        // 恐らくbool代数などの話が絡んでくるはず.
+        Not (in=a, out=nota);
+        Not (in=b, out=notb);
+        And (a=a, b=b,out=ab);
+        And (a=nota, b=notb,out=notab);
+        Or (a=ab, b=notab,out=out);
 }
