@@ -9,10 +9,16 @@
  *                 else out does not change (out[t+1] = out[t])
  */
 
+// 1bit レジスタ.
 CHIP Bit {
     IN in, load;
     OUT out;
 
     PARTS:
-    // Put your code here:
+        // MEMO: loadが1の時のみ、inを取り込む.
+        // それ以外の時はfbの値を保持したまま.
+        Mux (a=fb, b=in, sel=load, out=w1);
+        // MEMO: 出力を1clock後に出す.
+        // MEMO: outは複数出力できる(今回みたいにfbみたいに出力をどっかの入力で使用することもできる)
+        DFF (in=w1, out=out, out=fb);
 }
