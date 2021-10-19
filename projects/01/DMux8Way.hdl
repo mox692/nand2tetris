@@ -11,6 +11,8 @@
  *                            {0, 0, 0, 0, 0, 0, 0, in} if sel == 111
  */
 
+// MEMO: 1bitの入力を多bit(今回は8bit)の出力に振り分ける.
+//       振り分け方はselによる.
 CHIP DMux8Way {
     IN in, sel[3];
     OUT a, b, c, d, e, f, g, h;
